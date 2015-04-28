@@ -15,7 +15,13 @@
 3. screen をインストール
    $ brew tap rcmdnk/homebrew-rcmdnkpac
    $ brew install screenutf8 --utf8
-4. [iTerm2 2.1 beta 以降](http://iterm2.com/downloads.html) を推奨
+4. [iTerm2 2.1 beta 以降](http://iterm2.com/downloads.html) のインストールを推奨
   - iTerm2 - Preferences.. - Profiles - General - Command で Command を選び、 `/bin/zsh` を入力
   - システム環境設定からデフォルトシェルを zsh に変更すると App Store でエラーが起きるのでダメ
+5. [MacVim-KaoriYa](https://github.com/splhack/macvim-kaoriya) のインストールを推奨
 
+### インストール方法
+
+    $ make
+    $ cp -a .vim* .gvim* $HOME
+    $ cp -a .zsh* $HOME

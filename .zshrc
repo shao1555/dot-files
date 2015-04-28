@@ -138,8 +138,11 @@ fi
 
 # RVM (Ruby Version Manager)
 # ref: https://rvm.io/integration/zsh
+export PATH="$PATH:$HOME/.rvm/bin" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 setopt nullglob
 unsetopt auto_name_dirs
 
 # MacVim
 alias macvim="mvim --remote-tab-silent"
+
