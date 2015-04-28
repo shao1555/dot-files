@@ -22,6 +22,30 @@
 
 ### インストール方法
 
+事前にバックアップをとってください。
+
     $ make
     $ cp -a .vim* .gvim* $HOME
     $ cp -a .zsh* $HOME
+    $ cp .screenrc $HOME
+
+### 参考: AWS のアカウントをシェルで使えるようにする方法
+
+`$HOME/.aws` ディレクトリを用意し、以下のファイルを作成してください。
+
+#### $HOME/.aws/credentials
+
+```
+[default]
+aws_access_key_id = ...................
+aws_secret_access_key = ......................... 
+```
+
+#### $HOME/.aws/config
+
+```
+[default]
+region=ap-northeast-1
+output=json
+```
+
