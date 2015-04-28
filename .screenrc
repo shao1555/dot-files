@@ -19,12 +19,7 @@ altscreen on
 
 hardstatus alwayslastline "%= %l %{= dw}%Y/%m/%d %c:%s"
 caption always "%{= dw}%-w%{=b dr}%n %t%{-}%+w"
-#caption always "%{= dw}%-w%{=b dr}%n %t%{-}%+w %= %{= dw}%Y/%m/%d %c:%s"
 
-#log off
-#deflog off
-#deflog on
-#logfile "$HOME/.screen/log/screen-%Y%m%d-%n.log"
 hardcopydir "$HOME/.screen/"
 
 term xterm-256color
@@ -41,8 +36,6 @@ termcapinfo xterm*|kterm*|screen* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 # Default {{{2
 bind n screen
 bind ^N screen
-bind c kill
-bind ^C kill
 bind l next
 bind ^L next
 bind h prev
@@ -52,7 +45,7 @@ bind ^J next
 bind k prev
 bind ^K prev
 
-# Widnow {{{2
+# Window {{{2
 bind ^W eval 'echo "window"' 'command -c window'
 bind -c window ^] command
 bind -c window n split -h
