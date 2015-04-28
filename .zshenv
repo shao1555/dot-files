@@ -22,7 +22,7 @@ manpath=(/usr/share/man )
 [[ -f "/bin/launchctl" ]] && export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
 
 # RVM (Ruby Version Manager)
-source_if "$HOME/.rvm/scripts/rvm"
+[[ -x "$HOME/.rvm/scripts/rvm" ]] && "$HOME/.rvm/scripts/rvm"
 
 # Java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
