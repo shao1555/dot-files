@@ -1,52 +1,10 @@
-# Utility {{{1
-export PATH MANPATH INFOPATH
-register_paths() { # {{{2
-    dir="$1"
-    if [ -d "$dir" ] || [ -z "$dir" ]; then
-        if [ -d "$dir/bin" ]; then PATH="$dir/bin:$PATH"; fi
-        if [ -d "$dir/sbin" ]; then PATH="$dir/sbin:$PATH"; fi
-        if [ -d "$dir/man" ]; then MANPATH="$dir/man:$MANPATH"; fi
-        if [ -d "$dir/share/man" ]; then MANPATH="$dir/share/man:$MANPATH"; fi
-        if [ -d "$dir/info" ]; then INFOPATH="$dir/info:$INFOPATH"; fi
-        for i in $dir/*; do
-            if [ -d "$i/bin" ]; then PATH="$i/bin:$PATH"; fi
-            if [ -d "$i/sbin" ]; then PATH="$i/sbin:$PATH"; fi
-            if [ -d "$i/man" ]; then MANPATH="$i/man:$MANPATH"; fi
-            if [ -d "$i/share/man" ]; then MANPATH="$i/share/man:$MANPATH"; fi
-            if [ -d "$i/info" ]; then INFOPATH="$i/info:$INFOPATH"; fi
-        done
-    fi
-}
+# Japanese setting
+export LANG=ja_JP.UTF-8
+export SHELL=/bin/zsh
 
-source_if() { # {{{2
-    [[ -s "$1" ]] && source "$1"
-}
-
-# Export {{{1
-# Path {{{2
-if [ ! "$REGISTER_PATHS_COMPLETED" ]; then
-    # for Defaults
-    register_paths ""
-    register_paths "/usr"
-    
-    # for MacPorts
-    register_paths "/opt/local"
-
-    # for manually build applications
-    register_paths "/usr/local"
-    register_paths "/usr/local/enabled"
-
-    # for my own tools
-    register_paths "$HOME/local"
-    register_paths "$HOME/local/enabled"
-
-    # completed
-    export REGISTER_PATHS_COMPLETED=1
-fi
-
-# Misc {{{2
 export TZ=JST-9
-export EDITOR=`which vim`
+export EDITOR="vim"
+export SVN_EDITOR="vim"
 export PAGER=`which less`
 export SHELL=`which zsh`
 export LESS="-i -M -R"
@@ -54,58 +12,31 @@ export GREP_COLOR="01;33"
 export GREP_OPTIONS="--color=auto"
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
-# SSH-Agent {{{2
-SSH_AGENT=`which ssh-agent`
-SSH_ADD=`which ssh-add`
-SSH_ENV="$HOME/.ssh/environment"
+umask 022
 
-function start_ssh_agent {
-    echo "Initialising new SSH agent..."
-    $SSH_AGENT | head -n 2 > $SSH_ENV
-    chmod 600 $SSH_ENV
-    . $SSH_ENV > /dev/null
-    $SSH_ADD < /dev/null
-}
+# Path Setting
+path=(/opt/local/bin /opt/local/sbin $HOME/local/bin $HOME/local/X11R6/bin /bin /usr/local/bin /usr/bin /usr/X11R6/bin /sbin /usr/sbin)
+manpath=(/usr/share/man )
 
-if [ -f $SSH_ENV ]; then
-    . $SSH_ENV > /dev/null
-    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent$ > /dev/null || {
-        start_ssh_agent
-    }   
-else
-    start_ssh_agent
-fi
-# Manager {{{1
-# homebrew (OSX) {{{2
-[[ -d "/usr/local/share/python" ]] && export PATH=/usr/local/share/python:$PATH
+# SSH Agent
+[[ -f "/bin/launchctl" ]] && export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
 
-# pythonbrew {{{2
-source_if "$HOME/.pythonbrew/etc/bashrc"
-
-# virtualenv {{{2
-export PYTHONSTARTUP=$HOME/.pythonstartup
-export WORKON_HOME=$HOME/.virtualenvs
-if [ -d $WORKON_HOME ]; then
-    export VIRTUALENVERAPPER_SH=`which virtualenvwrapper.sh`
-    source_if "$VIRTUALENVERAPPER_SH"
-fi
-
-# rvm {{{2
+# RVM (Ruby Version Manager)
 source_if "$HOME/.rvm/scripts/rvm"
 
-# perlbrew
-source_if "$HOME/perl5/perlbrew/etc/bashrc"
+# Java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 
-# nvm {{{2
-source_if "$HOME/.nvm/nvm.sh"
+# Android
+export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_HOME/tools
+export PATH=$PATH:$ANDROID_SDK_HOME/platform-tools
 
-# nodebrew {{{2
-[[ -d "$HOME/.nodebrew" ]] && export PATH=$HOME/.nodebrew/current/bin:$PATH
+# homebrew
+export PATH=/usr/local/sbin:$PATH # homebrew
 
-# cabal {{{2
-[[ -d "$HOME/.cabal" ]] && export PATH=$HOME/.cabal/bin:$PATH
+# use MacVim instead of bundled vim
+[[ -d "/Applications/MacVim.app" ]] && alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-
-# End {{{1
-source_if "$HOME/.zshenv.local"
-
+### end of file
