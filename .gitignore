@@ -6,7 +6,6 @@
 .hgtags
 .netrwhist
 .vim/tags/
-.vim/bundle/
 .vim/.bundle/
 .vimperator/info/
 
