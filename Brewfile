@@ -54,6 +54,7 @@ cask "skype"
 cask "zoomus"
 cask "notion"
 cask "microsoft-teams"
+cask "discord"
 
 # Security
 cask "lastpass"
@@ -67,6 +68,7 @@ cask "adobe-creative-cloud"
 cask "google-drive-file-stream"
 cask "dropbox"
 cask "weiyun"
+cask "balenaetcher"
 
 # Input Methods and Helpers
 cask "karabiner-elements"
@@ -75,9 +77,11 @@ cask "atok"
 cask "sogouinput"
 
 # Media
+cask "iina"
 cask "handbrake"
 cask "makemkv"
 cask "kobo"
+cask "transmission"
 
 # Utilities
 cask "istat-menus5"
@@ -93,11 +97,9 @@ cask "v2rayu"
 cask "openconnect-gui"
 cask "tunnelblick"
 
-# 2019-12-30
-cask "transmission"
-cask "balenaetcher"
-
-cask "discord"
+# Crypto assets
+cask "electrum"
+cask "ledger-live"
 
 ## Mac App Store
 mas "Xcode", id: 497799835
