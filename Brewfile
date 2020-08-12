@@ -31,6 +31,7 @@ cask "firefox"
 cask "chromedriver"
 cask "microsoft-edge"
 cask "wechatwebdevtools"
+cask "graphql-playground"
 
 # Development Tools
 cask "iterm2"
@@ -48,6 +49,7 @@ cask "ngrok"
 cask "graphiql"
 cask "sequel-pro-nightly"
 cask "sf-symbols"
+cask "another-redis-desktop-manager"
 
 # Communication
 cask "skype"
@@ -59,7 +61,6 @@ cask "discord"
 # Security
 cask "lastpass"
 cask "authy"
-cask "avast-security"
 
 # Office and Creative Suite
 cask "adobe-creative-cloud"
@@ -69,6 +70,7 @@ cask "google-drive-file-stream"
 cask "dropbox"
 cask "weiyun"
 cask "balenaetcher"
+cask "onedrive"
 
 # Input Methods and Helpers
 cask "karabiner-elements"
@@ -85,6 +87,7 @@ cask "transmission"
 
 # Utilities
 cask "istat-menus5"
+cask "cheatsheet"
 
 # Device Drivers
 cask "android-platform-tools"
@@ -121,7 +124,6 @@ mas "Skitch", id: 425955336
 mas "Magnet", id: 441258766
 mas "ExSqueeze it", id: 680194796
 mas "The Unarchiver", id: 425424353
-mas "OneDrive", id: 823766827
 mas "Theine", id: 955848755
 mas "Be Focused Pro", id: 961632517
 mas "Speedtest by Ookla", id: 1153157709

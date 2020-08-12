@@ -18,7 +18,11 @@
 - CleanArchiver
   - https://github.com/anyakichi/CleanArchiver/releases
 - IMEShortcuts 0.14 beta
-- Progress Telerik Fiddler
+  - https://itslog.tistory.com/attachment/cfile25.uf@99D71F375BED748A1DBCD5.zip
+- Fiddler Everywhere
+  - https://api.getfiddler.com/mac/latest-mac
+- F-Secure SAFE
+  - https://www.f-secure.com/jp-ja/home/download
 
 ### 参考: AWS のアカウントをシェルで使えるようにする方法
 
